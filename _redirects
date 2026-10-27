@@ -1,0 +1,4 @@
+# Legacy URL redirects
+# Format: /old-path  /new-path  301
+
+/blog/*  /posts/:splat  301

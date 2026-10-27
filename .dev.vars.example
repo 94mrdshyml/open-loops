@@ -1,0 +1,29 @@
+# Local dev secrets for Wrangler — copy to .dev.vars and fill in values.
+# .dev.vars is gitignored. This file is safe to commit.
+
+CLOUDFLARE_ACCOUNT_ID=
+CLOUDFLARE_API_TOKEN=
+DATABASE_URL=
+# Non-pooled Neon URL — required for drizzle migrations (pooled URL silently fails DDL)
+DIRECT_DATABASE_URL=
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=http://localhost:5173
+RESEND_API_KEY=
+# Optional. The OpenRouter key is normally pasted in Dashboard, Settings, Integrations.
+# This is only a fallback until one is saved there.
+OPENROUTER_API_KEY=
+RESEND_FROM_EMAIL=onboarding@resend.dev
+RESEND_FROM_NAME=Open Tabs
+R2_ACCOUNT_ID=
+R2_ACCESS_KEY_ID=
+R2_SECRET_ACCESS_KEY=
+UMAMI_WEBSITE_ID=
+R2_BUCKET=
+CRON_SECRET=
+RESEND_SEGMENT_ALL_USERS_ID=
+RESEND_SEGMENT_NEWSLETTER_ID=
+RESEND_TOPIC_NEWSLETTER_ID=
+RESEND_WEBHOOK_SECRET=
+PUBLIC_SITE_URL=http://localhost:5173
+PUBLIC_R2_PUBLIC_URL=
+ORIGIN=http://localhost:5173
