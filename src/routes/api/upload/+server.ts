@@ -12,7 +12,7 @@ import type { RequestHandler } from './$types';
 export const POST: RequestHandler = async ({ request, locals, platform }) => {
 	if (!locals.user) error(401, 'Unauthorized');
 
-	const bucket = platform?.env?.OPENTABS_ASSETS;
+	const bucket = (platform?.env as { OPENLOOPS_ASSETS?: R2Bucket } | undefined)?.OPENLOOPS_ASSETS;
 	if (!bucket) error(500, 'R2 binding not available');
 
 	const publicUrl = platform?.env?.PUBLIC_R2_PUBLIC_URL;
