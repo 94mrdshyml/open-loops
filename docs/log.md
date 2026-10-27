@@ -1,5 +1,25 @@
 # Build Log — Open Tabs
 
+## Session 56: First production deployment fixes
+
+**Date:** 2026-10-27
+**Scope:** Diagnose failed Cloudflare Pages deployments and prepare a safe retry.
+
+**What changed:**
+
+- Aligned Wrangler and the upload route on the documented `BLOG_ASSETS` R2 binding, removing the type cast that hid the config mismatch.
+- Made migration `0005_drop_logs` safe to retry after a partial run. Dropping the logs table already removes its indexes, so the redundant index drops were removed and the table drop now uses `IF EXISTS`.
+- Regenerated `worker-configuration.d.ts` from the Wrangler config.
+
+**Decisions:**
+
+- The owner confirmed the production database is fresh/disposable and approved the existing data-clearing migrations `0009` and `0010` for this deployment.
+- The database migration remains ahead of Pages deployment in the workflow; deployment must stop if migrations fail.
+
+**Checked:** `pnpm check` passes (0 errors, 22 Svelte warnings); `pnpm build` passes; targeted ESLint and Prettier checks pass. Full `pnpm lint` still fails on existing formatting issues outside the changed files. The repaired deployment is pending the next GitHub Actions run.
+
+---
+
 ## Session 55: A public read-only API
 
 **Date:** 2026-10-19
