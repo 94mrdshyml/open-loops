@@ -9,14 +9,17 @@
 
 - Aligned Wrangler and the upload route on the documented `BLOG_ASSETS` R2 binding, removing the type cast that hid the config mismatch.
 - Made migration `0005_drop_logs` safe to retry after a partial run. Dropping the logs table already removes its indexes, so the redundant index drops were removed and the table drop now uses `IF EXISTS`.
+- Corrected the migration journal timestamps for `0005`–`0011`. Their old timestamps preceded `0004`, which made Drizzle skip them once earlier migrations were recorded.
+- Reconciled the production Drizzle ledger after read-only checks confirmed migrations `0000`–`0004` were reflected in the schema, `0005` had removed `logs`, the ledger was empty, and all application tables were empty. The transaction records those six completed migrations so the next run starts at `0006`.
 - Regenerated `worker-configuration.d.ts` from the Wrangler config.
+- Rotated the exposed database role password and updated the GitHub Actions secrets, Cloudflare Pages production secrets, and local `.env.local` without printing the new credential.
 
 **Decisions:**
 
 - The owner confirmed the production database is fresh/disposable and approved the existing data-clearing migrations `0009` and `0010` for this deployment.
 - The database migration remains ahead of Pages deployment in the workflow; deployment must stop if migrations fail.
 
-**Checked:** `pnpm check` passes (0 errors, 22 Svelte warnings); `pnpm build` passes; targeted ESLint and Prettier checks pass. Full `pnpm lint` still fails on existing formatting issues outside the changed files. The repaired deployment is pending the next GitHub Actions run.
+**Checked:** `pnpm check` passes (0 errors, 22 Svelte warnings); `pnpm build` passes; targeted ESLint and Prettier checks pass; the journal timestamps are strictly increasing. Full `pnpm lint` remains blocked by pre-existing formatting issues in unrelated files. The next GitHub Actions run is expected to apply migrations `0006` onward and deploy.
 
 ---
 
