@@ -5,12 +5,11 @@
 	"compatibility_flags": ["nodejs_als", "nodejs_compat"],
 	"pages_build_output_dir": ".svelte-kit/cloudflare",
 
-	"r2_buckets": [{ "binding": "OPENTABS_ASSETS", "bucket_name": "open-tabs-media" }],
+	"r2_buckets": [{ "binding": "", "bucket_name": "" }],
 
 	"vars": {
-		"PUBLIC_SITE_URL": "blog.indexdaily.in",
+		"PUBLIC_SITE_URL": "",
 		"PUBLIC_UMAMI_SHARE_URL": "https://cloud.umami.is/share/Lq6huFN0xlcHd8oG",
-		"PUBLIC_R2_PUBLIC_URL": "https://assets.indexdaily.in",
-		"TINYBIRD_DATASOURCE": "open_tabs_events"
+		"PUBLIC_R2_PUBLIC_URL": "https://assets.indexdaily.in"
 	}
 }
