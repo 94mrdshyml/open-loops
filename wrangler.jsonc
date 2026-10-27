@@ -5,7 +5,7 @@
 	"compatibility_flags": ["nodejs_als", "nodejs_compat"],
 	"pages_build_output_dir": ".svelte-kit/cloudflare",
 
-	"r2_buckets": [{ "binding": "", "bucket_name": "" }],
+	"r2_buckets": [{ "binding": "OPENLoops_ASSETS", "bucket_name": "open-loops-media" }],
 
 	"vars": {
 		"PUBLIC_SITE_URL": "",
